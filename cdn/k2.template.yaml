@@ -1,0 +1,6 @@
+k2:
+  metadata:
+    id: k2.templates.code.cdn
+    kind: "template"
+  body:
+    name: "www"
