@@ -1,7 +1,7 @@
 import logo from "../logo.svg";
 
  
-import <%= element.name %> from "./<%= element.include %>"
+import <%= element %> from "./<%= element.include %>"
  
 
 
@@ -12,7 +12,7 @@ const App = () => {
     <header className="App-header">
       <img src={logo} className="App-logo" alt="logo" />
       <p>
-        rendering <%= element.name %>
+        rendering <%= element %>
       </p>
       <a
         className="App-link"
@@ -23,7 +23,7 @@ const App = () => {
         Use one of 
       </a>
       <ul>
-     <<%=element.name %> />
+     <<%=element %> />
       </ul>
     </header>
   </div>
