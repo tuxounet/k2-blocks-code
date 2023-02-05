@@ -4,7 +4,5 @@ k2:
     kind: "template"
   body:
     name: "react-cra"
-    parameters: 
+    parameters:
       element: App
-      
-  
