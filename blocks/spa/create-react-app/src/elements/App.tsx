@@ -1,8 +1,8 @@
 import logo from "../logo.svg";
 
-<% for(const element of elements) { %>
+ 
 import <%= element.name %> from "./<%= element.include %>"
-<% } %>
+ 
 
 
 const App = () => {
@@ -12,7 +12,7 @@ const App = () => {
     <header className="App-header">
       <img src={logo} className="App-logo" alt="logo" />
       <p>
-      Default rendering <%= element %>
+      Default rendering <%= element.name %>
       </p>
       <a
         className="App-link"
