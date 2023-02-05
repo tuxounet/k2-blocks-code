@@ -1,6 +1,0 @@
-k2:
-  metadata:
-    id: k2.templates.code.react-cra
-    kind: "template"
-  body:
-    name: "www"
