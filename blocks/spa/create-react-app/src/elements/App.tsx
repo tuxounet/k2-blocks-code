@@ -12,7 +12,7 @@ const App = () => {
     <header className="App-header">
       <img src={logo} className="App-logo" alt="logo" />
       <p>
-      Default rendering <%= element.name %>
+        rendering <%= element.name %>
       </p>
       <a
         className="App-link"
@@ -23,9 +23,7 @@ const App = () => {
         Use one of 
       </a>
       <ul>
-      <% for(const element of elements) { %>
-        <li> <%= element.name %></li>
-      <% } %>
+     <<%=element.name %> />
       </ul>
     </header>
   </div>
