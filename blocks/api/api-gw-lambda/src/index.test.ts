@@ -71,6 +71,6 @@ describe("index", () => {
         identity: undefined,
       }
     );
-    expect(result).toHaveProperty("status", 200);
+    expect(result).toHaveProperty("statusCode", 200);
   });
 });
