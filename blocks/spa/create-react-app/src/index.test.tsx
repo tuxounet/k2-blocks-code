@@ -6,6 +6,6 @@ import <%= element %> from "./elements/<%= element %>"
  
 test("renders learn react link", () => {
   render(<<%= element %> />);
-  const linkElement = screen.getByText(/<%= element %> />/);
+  const linkElement = screen.getByText(/<%= element %>/);
   expect(linkElement).toBeInTheDocument();
 });
