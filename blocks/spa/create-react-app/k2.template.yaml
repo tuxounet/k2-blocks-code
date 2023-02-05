@@ -6,5 +6,6 @@ k2:
     name: "react-cra"
     parameters: 
       elements: 
-        - "components/App"
+        - name: App
+          include: "components/App"
       element: "components/App"
