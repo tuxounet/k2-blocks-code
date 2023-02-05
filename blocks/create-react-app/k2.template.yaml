@@ -1,0 +1,10 @@
+k2:
+  metadata:
+    id: k2.templates.code.react.create-react-app
+    kind: "template"
+  body:
+    name: "react-cra"
+    parameters: 
+      components: 
+        - "components/App"
+      root: "components/App"
