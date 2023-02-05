@@ -5,5 +5,11 @@ k2:
   body:
     name: "api-gw-lambda"
     parameters:
-      element: API
-      title: "My API for api gw"
+      description: "API Web Presence"
+      group: "app"
+      component: "back"
+      routes:
+        - public: true
+          path: /health
+          method: GET
+          include: Heath
