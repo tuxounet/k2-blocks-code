@@ -6,3 +6,4 @@ k2:
     name: "react-cra"
     parameters:
       element: App
+      title: "My App from CRA"
