@@ -1,0 +1,9 @@
+k2:
+  metadata:
+    id: k2.templates.code.api.api-gw-lambda
+    kind: "template"
+  body:
+    name: "api-gw-lambda"
+    parameters:
+      element: API
+      title: "My API for api gw"
