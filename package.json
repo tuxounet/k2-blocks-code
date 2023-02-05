@@ -1,0 +1,11 @@
+{
+    "scripts": {
+        "nuke": "rm -rf package-lock.json node_modules"
+    },
+    "dependencies": {
+        "@types/node": "18.11.18",
+        "@tuxounet-k2/builder": "latest",
+        "aws-cdk-lib": "2.61.1",
+        "constructs": "^10.0.0"
+    }
+}
