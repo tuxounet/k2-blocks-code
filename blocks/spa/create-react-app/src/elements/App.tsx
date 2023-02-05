@@ -1,7 +1,7 @@
 import logo from "../logo.svg";
 
  
-import <%= element %> from "./<%= element.include %>"
+import <%= element %> from "./<%= element %>"
  
 
 
