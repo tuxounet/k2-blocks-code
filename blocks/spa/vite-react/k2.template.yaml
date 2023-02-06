@@ -1,0 +1,9 @@
+k2:
+  metadata:
+    id: k2.templates.code.react.vite-react
+    kind: "template"
+  body:
+    name: "vite-create"
+    parameters:
+      element: App
+      title: "My App from Vite"
