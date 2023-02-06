@@ -5,5 +5,8 @@ k2:
   body:
     name: "vite-create"
     parameters:
-      element: App
-      title: "My App from Vite"
+      description: "App Web Presence"
+      group: "app"
+      component: "front"
+      element: Default
+      title: "🤔 SPA App"

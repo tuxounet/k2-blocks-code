@@ -5,5 +5,8 @@ k2:
   body:
     name: "react-cra"
     parameters:
-      element: App
-      title: "My App from CRA"
+      description: "App Web Presence"
+      group: "app"
+      component: "front"
+      element: Default
+      title: "🤔 SPA App"
