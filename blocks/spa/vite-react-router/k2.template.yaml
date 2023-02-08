@@ -1,0 +1,12 @@
+k2:
+  metadata:
+    id: k2.templates.code.react.vite-react-router
+    kind: "template"
+  body:
+    name: "vite-create-router"
+    parameters:
+      description: "App Web Presence With routing"
+      group: "app"
+      component: "front"
+      element: Default
+      title: "🤔 SPA App With Dom Router"
