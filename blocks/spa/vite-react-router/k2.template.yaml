@@ -10,3 +10,6 @@ k2:
       component: "front"
       element: Default
       title: "🤔 SPA App With Dom Router"
+      routes:
+        - path: /
+          element: "/"
