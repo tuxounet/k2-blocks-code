@@ -10,8 +10,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 const router = createBrowserRouter([
   <% for(const route of routes) { %>
   {
-    path: "<%= route.path>",
-    element: <<%= route.element> />,
+    path: "<%= route.path%>",
+    element: <<%= route.element%> />,
   },
   <% } %>
 ]);
