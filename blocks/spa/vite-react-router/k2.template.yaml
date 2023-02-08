@@ -12,4 +12,4 @@ k2:
       title: "🤔 SPA App With Dom Router"
       routes:
         - path: /
-          element: "/"
+          element: "Default"
