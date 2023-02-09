@@ -56,15 +56,11 @@ export function ConfigProvider({ children }: { children: React.ReactNode }) {
   let value = { current, getOrDefault };
 
   return (
-    <>
+    <ConfigContext.Provider value={value}>
       {!loaded && error === "" && <>Chargement...</>}
       {loaded && error !== "" && <>Erreur {error}</>}
-      {loaded && error === "" && (
-        <ConfigContext.Provider value={value}>
-          {children}
-        </ConfigContext.Provider>
-      )}
-    </>
+      {loaded && error === "" && children}
+    </ConfigContext.Provider>
   );
 }
 
