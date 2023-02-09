@@ -26,11 +26,17 @@ export function ConfigProvider({ children }: { children: React.ReactNode }) {
 
         const hostSegments = window.location.hostname.split(".");
 
-        const lastSegment = hostSegments[hostSegments.length - 1];
+        const firstSegment =hostSegments[0]
+        let prefix = firstSegment
+        if(prefix.includes("-"))
+        {
+          prefix.split("-")[0] + "-"
+        }
+        
         hostSegments.splice(0, 1);
         const otherSegments = hostSegments.join(".");
 
-        const apiBaseUrl = `https://${lastSegment}.${otherSegments}`;
+        const apiBaseUrl = `https://${prefix}api.${otherSegments}`;
         const configUrl = `${apiBaseUrl}/config`;
 
         const configResult = await axios.get<Record<string, string>>(configUrl);
