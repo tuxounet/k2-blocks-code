@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import localConfig from "../../<%=  devConfigFile %>>";
+import localConfig from "../../<%=  devConfigFile %>";
 export interface ConfigContextType {
   current: Record<string, string>;
   getOrDefault: (key: string, defaultValue: string) => string;
