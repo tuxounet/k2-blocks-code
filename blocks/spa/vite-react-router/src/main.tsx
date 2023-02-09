@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ConfigContext } from "./contexts/config/ConfigContext";
+import ErrorBoundary from "./contexts/ErrorBoundary";
 
 <% for(const route of routes) { %>import <%= route.element %> from "./routes/<%= route.element %>";
 <% } %>
@@ -19,8 +20,10 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <ConfigContext>
-      <RouterProvider router={router} />
-    </ConfigContext>
+    <ErrorBoundary>
+      <ConfigContext>
+        <RouterProvider router={router} />
+      </ConfigContext>
+    </ErrorBoundary>
   </React.StrictMode>
 );
