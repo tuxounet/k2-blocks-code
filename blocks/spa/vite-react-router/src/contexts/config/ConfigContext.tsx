@@ -1,7 +1,6 @@
 import React from "react";
-import { useLocation, useNavigate, Navigate } from "react-router-dom";
 import axios from "axios";
-import localConfig from "../../assets/config.json";
+import localConfig from "../../<%=  devConfigFile %>>";
 export interface ConfigContextType {
   current: Record<string, string>;
   getOrDefault: (key: string, defaultValue: string) => string;

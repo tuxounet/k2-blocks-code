@@ -10,8 +10,7 @@ k2:
       component: "front"
       element: Default
       title: "🤔 SPA App With Dom Router"
-      dev:
-        configUrl: about:blank
+      devConfigFile: assets/config.json      
       routes:
         - path: /
           element: "Default"
