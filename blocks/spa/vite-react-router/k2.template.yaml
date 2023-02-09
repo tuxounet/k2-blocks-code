@@ -10,6 +10,9 @@ k2:
       component: "front"
       element: Default
       title: "🤔 SPA App With Dom Router"
+      dev:
+        configUrl: about:blank
       routes:
         - path: /
           element: "Default"
+          security: "public"
