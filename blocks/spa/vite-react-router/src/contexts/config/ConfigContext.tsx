@@ -20,12 +20,10 @@ export function ConfigProvider({ children }: { children: React.ReactNode }) {
   React.useEffect(() => {
     const fetchConfig = async () => {
       setLoaded(false);
-
+      let apiUrl = "http://localhost:8000/";
       try {
         if (!window.location.hostname.includes(".")) {
           setIsDev(true);
-
-          setApiUrl("http://localhost:8000/");
         } else {
           setIsDev(false);
           const hostSegments = window.location.hostname.split(".");
@@ -39,10 +37,9 @@ export function ConfigProvider({ children }: { children: React.ReactNode }) {
           hostSegments.splice(0, 1);
           const otherSegments = hostSegments.join(".");
 
-          const apiBaseUrl = `https://${prefix}api.${otherSegments}`;
-          setApiUrl(apiBaseUrl);
+          apiUrl = `https://${prefix}api.${otherSegments}`;
         }
-
+        setApiUrl(apiUrl);
         const configUrl = `${apiUrl}/config`;
 
         const configResult = await axios.get<Record<string, string>>(configUrl);
