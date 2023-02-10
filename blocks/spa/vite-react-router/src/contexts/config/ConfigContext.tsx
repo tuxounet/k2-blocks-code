@@ -26,13 +26,12 @@ export function ConfigProvider({ children }: { children: React.ReactNode }) {
 
         const hostSegments = window.location.hostname.split(".");
 
-        const firstSegment =hostSegments[0]
-        let prefix = firstSegment
-        if(prefix.includes("-"))
-        {
-          prefix.split("-")[0] + "-"
+        const firstSegment = hostSegments[0];
+        let prefix = firstSegment;
+        if (prefix.includes("-")) {
+          prefix = prefix.split("-")[0] + "-";
         }
-        
+
         hostSegments.splice(0, 1);
         const otherSegments = hostSegments.join(".");
 
