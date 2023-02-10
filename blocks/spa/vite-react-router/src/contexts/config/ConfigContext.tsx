@@ -3,6 +3,8 @@ import axios from "axios";
 import localConfig from "../../<%=  devConfigFile %>";
 export interface ConfigContextType {
   current: Record<string, string>;
+  apiUrl: string;
+  isOffline: boolean;
   getOrDefault: (key: string, defaultValue: string) => string;
 }
 
@@ -11,6 +13,8 @@ export let ConfigContext = React.createContext<ConfigContextType>(null!);
 export function ConfigProvider({ children }: { children: React.ReactNode }) {
   const [error, setError] = React.useState("");
   const [loaded, setLoaded] = React.useState(false);
+  const [apiUrl, setApiUrl] = React.useState<string>("/");
+  const [isOffline, setIsOffline] = React.useState(false);
 
   let [current, setCurrent] = React.useState<Record<string, string>>({});
 
@@ -19,11 +23,14 @@ export function ConfigProvider({ children }: { children: React.ReactNode }) {
       setLoaded(false);
 
       try {
+         
+        setApiUrl("/");
         if (!window.location.hostname.includes(".")) {
+          setIsOffline(true);
           setCurrent(localConfig as any);
           return;
         }
-
+        setIsOffline(false);
         const hostSegments = window.location.hostname.split(".");
 
         const firstSegment = hostSegments[0];
@@ -36,6 +43,7 @@ export function ConfigProvider({ children }: { children: React.ReactNode }) {
         const otherSegments = hostSegments.join(".");
 
         const apiBaseUrl = `https://${prefix}api.${otherSegments}`;
+        setApiUrl(apiBaseUrl);
         const configUrl = `${apiBaseUrl}/config`;
 
         const configResult = await axios.get<Record<string, string>>(configUrl);
@@ -58,7 +66,7 @@ export function ConfigProvider({ children }: { children: React.ReactNode }) {
     if (value == null) return defaultValue;
     return value;
   };
-  let value = { current, getOrDefault };
+  let value = { current, getOrDefault, apiUrl, isOffline };
 
   return (
     <ConfigContext.Provider value={value}>

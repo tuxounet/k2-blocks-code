@@ -4,12 +4,17 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ConfigProvider } from "./contexts/config/ConfigContext";
 import ErrorBoundary from "./contexts/ErrorBoundary";
+import AuthCallback from "./routes/AuthCallback";
 
 <% for(const route of routes) { %>import <%= route.element %> from "./routes/<%= route.element %>";
 <% } %>
 
 
 const router = createBrowserRouter([
+  {
+    path:"/callback", 
+    element: <AuthCallback />
+  },
   <% for(const route of routes) { %>
   {
     path: "<%= route.path%>",
