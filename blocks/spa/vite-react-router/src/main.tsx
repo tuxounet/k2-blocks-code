@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ConfigProvider } from "./contexts/config/ConfigContext";
 import ErrorBoundary from "./contexts/ErrorBoundary";
 import AuthCallback from "./routes/AuthCallback";
+import { AuthPrivate } from "./contexts/authentication/AuthPrivate";
 
 <% for(const route of routes) { %>import <%= route.element %> from "./routes/<%= route.element %>";
 <% } %>
@@ -18,7 +19,12 @@ const router = createBrowserRouter([
   <% for(const route of routes) { %>
   {
     path: "<%= route.path%>",
+    <%if(route.security ==="public" ) { %>
     element: <<%= route.element%> />,
+    <% } %>
+    <%if(route.security !=="public" ) { %>
+    element: <AuthPrivate><<%= route.element%> /></AuthPrivate>,
+    <% } %>
   },
   <% } %>
 ]);
