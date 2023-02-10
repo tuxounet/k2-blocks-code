@@ -1,10 +1,9 @@
 import React from "react";
 import axios from "axios";
-import localConfig from "../../<%=  devConfigFile %>";
 export interface ConfigContextType {
   current: Record<string, string>;
   apiUrl: string;
-  isOffline: boolean;
+  isDev: boolean;
   getOrDefault: (key: string, defaultValue: string) => string;
 }
 
@@ -14,7 +13,7 @@ export function ConfigProvider({ children }: { children: React.ReactNode }) {
   const [error, setError] = React.useState("");
   const [loaded, setLoaded] = React.useState(false);
   const [apiUrl, setApiUrl] = React.useState<string>("/");
-  const [isOffline, setIsOffline] = React.useState(false);
+  const [isDev, setIsDev] = React.useState(false);
 
   let [current, setCurrent] = React.useState<Record<string, string>>({});
 
@@ -23,28 +22,28 @@ export function ConfigProvider({ children }: { children: React.ReactNode }) {
       setLoaded(false);
 
       try {
-         
-        setApiUrl("/");
         if (!window.location.hostname.includes(".")) {
-          setIsOffline(true);
-          setCurrent(localConfig as any);
-          return;
+          setIsDev(true);
+
+          setApiUrl("http://localhost:8000/");
+        } else {
+          setIsDev(false);
+          const hostSegments = window.location.hostname.split(".");
+
+          const firstSegment = hostSegments[0];
+          let prefix = firstSegment;
+          if (prefix.includes("-")) {
+            prefix = prefix.split("-")[0] + "-";
+          }
+
+          hostSegments.splice(0, 1);
+          const otherSegments = hostSegments.join(".");
+
+          const apiBaseUrl = `https://${prefix}api.${otherSegments}`;
+          setApiUrl(apiBaseUrl);
         }
-        setIsOffline(false);
-        const hostSegments = window.location.hostname.split(".");
 
-        const firstSegment = hostSegments[0];
-        let prefix = firstSegment;
-        if (prefix.includes("-")) {
-          prefix = prefix.split("-")[0] + "-";
-        }
-
-        hostSegments.splice(0, 1);
-        const otherSegments = hostSegments.join(".");
-
-        const apiBaseUrl = `https://${prefix}api.${otherSegments}`;
-        setApiUrl(apiBaseUrl);
-        const configUrl = `${apiBaseUrl}/config`;
+        const configUrl = `${apiUrl}/config`;
 
         const configResult = await axios.get<Record<string, string>>(configUrl);
         console.info("config", configResult.data.CONFIG);
@@ -66,7 +65,7 @@ export function ConfigProvider({ children }: { children: React.ReactNode }) {
     if (value == null) return defaultValue;
     return value;
   };
-  let value = { current, getOrDefault, apiUrl, isOffline };
+  let value = { current, getOrDefault, apiUrl, isDev };
 
   return (
     <ConfigContext.Provider value={value}>
