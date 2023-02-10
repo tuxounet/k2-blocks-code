@@ -20,7 +20,7 @@ export function ConfigProvider({ children }: { children: React.ReactNode }) {
   React.useEffect(() => {
     const fetchConfig = async () => {
       setLoaded(false);
-      let apiUrl = "http://localhost:8000/";
+      let apiUrl = "http://localhost:8000";
       try {
         if (!window.location.hostname.includes(".")) {
           setIsDev(true);
