@@ -6,6 +6,7 @@ import { ConfigProvider } from "./contexts/config/ConfigContext";
 import ErrorBoundary from "./contexts/ErrorBoundary";
 import AuthCallback from "./routes/AuthCallback";
 import { AuthPrivate } from "./contexts/authentication/AuthPrivate";
+import { AuthProvider } from "./contexts/authentication/AuthContext";
 
 <% for(const route of routes) { %>import <%= route.element %> from "./routes/<%= route.element %>";
 <% } %>
@@ -33,7 +34,9 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <ErrorBoundary>
       <ConfigProvider>
-        <RouterProvider router={router} />
+        <AuthProvider>
+          <RouterProvider router={router} />
+        </AuthProvider>
       </ConfigProvider>
     </ErrorBoundary>
   </React.StrictMode>

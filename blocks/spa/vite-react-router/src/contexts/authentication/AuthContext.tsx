@@ -1,5 +1,5 @@
 import React from "react";
-import { getLoginUrl, getLogoutUrl, needLogin, getToken } from "./AuthProvider";
+import { getLoginUrl, getLogoutUrl, needLogin, getToken } from "./AuthHandler";
 import { useConfig } from "../config/ConfigContext";
 export interface AuthContextType {
   user: any;

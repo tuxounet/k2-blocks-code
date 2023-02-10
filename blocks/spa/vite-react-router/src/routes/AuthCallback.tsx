@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useAuth } from "../contexts/authentication/AuthContext";
-import { exchange_token } from "../contexts/authentication/AuthProvider";
+import { exchange_token } from "../contexts/authentication/AuthHandler";
 import { useConfig } from "../contexts/config/ConfigContext";
 
 function AuthCallback() {
