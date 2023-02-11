@@ -1,5 +1,5 @@
 {
-  "name": "@<%= partition %>/<%= group %>-<%= component %>-code",
+  "name": "@<%= partition %>/<%= system %>-<%= group %>-<%= component %>-code",
   "version": "<%= version %>",
   "private": true,
   "devDependencies": {
