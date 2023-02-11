@@ -8,9 +8,11 @@ export function getLoginUrl(config: ConfigContextType) {
   const state = crypto.randomUUID();
   sessionStorage.setItem(`codeVerifier-${state}`, state);
 
-  const redirect_uri = config.isOffline
-    ? `http://${window.location.hostname}:3000/auth/callback.html`
-    : `https://${window.location.hostname}/auth/callback.html`;
+  const redirect_uri =
+    window.location.protocol === "http:"
+      ? `http://${window.location.host}/callback`
+      : `https://${window.location.hostname}/callback`;
+
 
   const login_url =
     config.current.APP_OIDC_URL +
@@ -27,9 +29,10 @@ export function getLogoutUrl(config: ConfigContextType) {
   const state = crypto.randomUUID();
   sessionStorage.setItem(`codeVerifier-${state}`, state);
 
-  const redirect_uri = config.isOffline
-    ? `http://${window.location.hostname}:3000/auth/callback.html`
-    : `https://${window.location.hostname}/auth/callback.html`;
+  const redirect_uri =
+    window.location.protocol === "http:"
+      ? `http://${window.location.host}/callback`
+      : `https://${window.location.hostname}/callback`;
 
   const login_url =
     config.current.APP_OIDC_URL +

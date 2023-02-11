@@ -15,7 +15,7 @@ export function AuthStatus() {
       Welcome {auth.user}!{" "}
       <button
         onClick={() => {
-          auth.signout(() => navigate("/"));
+          auth.logout(() => navigate("/"));
         }}
       >
         Sign out
